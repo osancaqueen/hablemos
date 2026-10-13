@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hablemos – Mexican Spanish</title>
+<meta name="description" content="Learn Mexican Spanish, with Italian and Romanian hints.">
+<meta name="theme-color" content="#2438B8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hablemos">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B5%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B5%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F5F3FB; --surface:#FFFFFF; --ink:#1A1633; --muted:#5E5A78; --soft:#ECE8F7;
+  --pink:#E6007E; --teal:#0A8F92; --gold:#F6B100; --blue:#2438B8; --orange:#D9480F; --violet:#6A2FD0; --on-orange:#FFFFFF; --on-violet:#FFFFFF;
+  --on-pink:#FFFFFF; --on-teal:#FFFFFF; --on-gold:#1A1633; --on-blue:#FFFFFF;
+  --ok:#0A8F4D; --bad:#C62828;
+  --display:"Bagel Fat One","Arial Rounded MT Bold","Trebuchet MS",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12102A; --surface:#1D1A3D; --ink:#F3F0FF; --muted:#A9A4CC; --soft:#2A2656;
+    --pink:#FF4FA8; --teal:#35C9C3; --gold:#FFC83D; --blue:#8E9CFF; --orange:#FF8A4C; --violet:#B49BFF; --on-orange:#1A1633; --on-violet:#1A1633;
+    --on-pink:#1A1633; --on-teal:#1A1633; --on-gold:#1A1633; --on-blue:#1A1633;
+    --ok:#4BD38A; --bad:#FF7B7B;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12102A; --surface:#1D1A3D; --ink:#F3F0FF; --muted:#A9A4CC; --soft:#2A2656;
+  --pink:#FF4FA8; --teal:#35C9C3; --gold:#FFC83D; --blue:#8E9CFF; --orange:#FF8A4C; --violet:#B49BFF; --on-orange:#1A1633; --on-violet:#1A1633;
+  --on-pink:#1A1633; --on-teal:#1A1633; --on-gold:#1A1633; --on-blue:#1A1633;
+  --ok:#4BD38A; --bad:#FF7B7B;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.45;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.wrap{max-width:560px;margin:0 auto;padding:18px 16px 110px}
+.l1{--c:var(--pink);--on:var(--on-pink)}
+.l2{--c:var(--teal);--on:var(--on-teal)}
+.l3{--c:var(--gold);--on:var(--on-gold)}
+.l4{--c:var(--blue);--on:var(--on-blue)}
+.l5{--c:var(--orange);--on:var(--on-orange)}
+.l6{--c:var(--violet);--on:var(--on-violet)}
+
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1}
+h1{font-size:2.3rem}
+h2{font-size:1.5rem;margin-bottom:10px}
+h3{font-size:1.15rem;margin:18px 0 6px}
+p{margin:0 0 10px}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:700;background:var(--surface);font-size:.95rem;white-space:nowrap}
+
+/* loteria tiles */
+.tiles{display:grid;gap:14px;margin-top:18px}
+.tile{display:block;width:100%;text-align:left;background:var(--c);color:var(--on);border:3px solid var(--ink);border-radius:18px;padding:6px;box-shadow:5px 5px 0 var(--ink)}
+.tile:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.tile-in{border:2px solid var(--on);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.tile .no{grid-column:1/-1;font-weight:700;font-size:.9rem;display:flex;justify-content:space-between}
+.tile .emo{font-size:3rem;line-height:1}
+.tile .tt{font-family:var(--display);font-size:1.45rem;line-height:1.05}
+.tile .st{font-size:.92rem;opacity:.92}
+.bar{grid-column:1/-1;height:10px;border-radius:99px;background:rgba(255,255,255,.35);border:2px solid var(--on);overflow:hidden;margin-top:6px}
+.l3 .bar{background:rgba(26,22,51,.15)}
+.bar>i{display:block;height:100%;background:var(--on)}
+.prog{grid-column:1/-1;font-size:.85rem}
+
+/* buttons */
+.btn{display:block;width:100%;border:3px solid var(--ink);border-radius:14px;background:var(--surface);padding:13px 16px;font-weight:700;text-align:center;box-shadow:3px 3px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.main{background:var(--c,var(--blue));color:var(--on,var(--on-blue))}
+.btn.ghost{box-shadow:none;border-width:2px;background:transparent}
+.row{display:grid;gap:10px;margin:12px 0}
+.row.two{grid-template-columns:1fr 1fr}
+.row.three{grid-template-columns:1fr 1fr 1fr}
+.modes{display:grid;gap:10px;margin:14px 0 18px}
+.mode{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;text-align:left}
+.mode b{font-family:var(--display);font-weight:400;font-size:1.2rem}
+.mode span.ic{grid-row:1/3;font-size:1.7rem}
+
+/* flashcard */
+.sesbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.x{border:2px solid var(--ink);background:var(--surface);border-radius:50%;width:40px;height:40px;font-weight:700;flex:none}
+.meter{flex:1;height:10px;border:2px solid var(--ink);border-radius:99px;overflow:hidden;background:var(--surface)}
+.meter>i{display:block;height:100%;background:var(--c,var(--blue))}
+.card{background:var(--surface);border:3px solid var(--ink);border-radius:20px;padding:7px;box-shadow:6px 6px 0 var(--ink)}
+.card-in{border:2px dashed var(--c);border-radius:14px;padding:18px 16px 20px;min-height:310px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.card .num{align-self:stretch;display:flex;justify-content:space-between;font-weight:700;color:var(--muted);font-size:.9rem}
+.es{font-family:var(--display);font-size:2.3rem;line-height:1.08;margin:22px 0 8px;word-break:break-word}
+.es.long{font-size:1.65rem}
+.say{border:2px solid var(--ink);background:var(--c);color:var(--on);border-radius:999px;padding:6px 16px;font-weight:700}
+.back{width:100%;margin-top:14px;text-align:left;display:grid;gap:8px}
+.en{font-size:1.25rem;font-weight:700;text-align:center}
+.xl{display:flex;gap:10px;align-items:baseline;background:var(--soft);border-radius:10px;padding:8px 12px}
+.xl em{font-style:normal;font-weight:700;color:var(--c);min-width:62px;font-size:.85rem}
+:root .l3 .xl em{color:var(--ink)}
+.note{font-size:.92rem;color:var(--muted);border-left:4px solid var(--c);padding-left:10px}
+.tap{color:var(--muted);margin-top:auto;padding-top:26px}
+
+/* quiz */
+.q{font-family:var(--display);font-size:1.75rem;text-align:center;margin:10px 0 6px;line-height:1.12}
+.q.long{font-size:1.35rem}
+.qd{text-align:center;color:var(--muted);margin-bottom:14px}
+.opts{display:grid;gap:10px}
+.opt{border:3px solid var(--ink);background:var(--surface);border-radius:14px;padding:13px 14px;text-align:left;font-weight:700;box-shadow:3px 3px 0 var(--ink)}
+.opt.right{background:var(--ok);color:#fff;border-color:var(--ink)}
+.opt.wrong{background:var(--bad);color:#fff;border-color:var(--ink)}
+.opt[disabled]{cursor:default}
+.fb{margin-top:14px;padding:12px 14px;border-radius:12px;background:var(--soft);display:grid;gap:6px}
+.fb b.ok{color:var(--ok)} .fb b.no{color:var(--bad)}
+
+input.ans{width:100%;border:3px solid var(--ink);border-radius:14px;padding:14px;font:inherit;font-size:1.2rem;background:var(--surface);color:var(--ink);margin:6px 0 12px}
+.accents{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.accents button{border:2px solid var(--ink);background:var(--surface);border-radius:10px;min-width:42px;height:42px;font-weight:700;font-size:1.05rem}
+
+/* list */
+details{border:2px solid var(--ink);border-radius:14px;background:var(--surface);padding:4px 14px;margin:10px 0}
+summary{cursor:pointer;font-weight:700;padding:10px 0}
+.wl{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-top:1px solid var(--soft)}
+.wl b{font-size:1.05rem}
+.wl .sub{grid-column:1;color:var(--muted);font-size:.9rem}
+.wl button.say{grid-row:1/3;grid-column:2;align-self:center;padding:4px 12px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:var(--soft);border:2px solid var(--ink)}
+.dot.on{background:var(--ok)} .dot.mid{background:var(--gold)}
+
+/* tabs */
+#tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:3px solid var(--ink);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+#tabs[hidden]{display:none}
+#tabs .in{display:flex;width:100%;max-width:560px}
+#tabs button{flex:1;border:0;background:none;padding:9px 4px 8px;font-weight:700;color:var(--muted);display:grid;gap:0;justify-items:center;font-size:.85rem}
+#tabs button .e{font-size:1.4rem;line-height:1.2}
+#tabs button[aria-current="page"]{color:var(--ink)}
+#tabs button[aria-current="page"] .e{filter:none;transform:scale(1.12)}
+
+/* settings */
+.set{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--soft)}
+.sw{width:52px;height:30px;border-radius:99px;border:2px solid var(--ink);background:var(--soft);position:relative;flex:none;padding:0}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:22px;height:22px;border-radius:50%;background:var(--ink)}
+.sw[aria-checked="true"]{background:var(--ok)}
+.sw[aria-checked="true"]::after{left:24px;background:#fff}
+.seg{display:flex;border:2px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:var(--surface);padding:6px 14px;font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.big{font-family:var(--display);font-size:3.4rem;line-height:1;text-align:center;margin:16px 0 4px}
+.center{text-align:center}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+td,th{border-bottom:1px solid var(--soft);padding:6px 8px 6px 0;text-align:left;vertical-align:top}
+th{font-weight:700}
+.scroll{overflow-x:auto}
+.gap{display:inline-block;min-width:5ch;border-bottom:4px solid var(--c);margin:0 2px}
+.modes .btn.off{opacity:.45}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app" class="wrap"></div>
+<nav id="tabs" aria-label="Main"><div class="in">
+  <button data-a="tab" data-v="home"><span class="e">🌵</span>Learn</button>
+  <button data-a="tab" data-v="notes"><span class="e">📖</span>Notes</button>
+  <button data-a="tab" data-v="settings"><span class="e">⚙️</span>Settings</button>
+</div></nav>
+
+<script>
+/* ---------- DATA: [spanish, english, italian, romanian, note] ---------- */
+const LEVELS=[
+{n:1,cls:"l1",emo:"🌵",name:"Primeros pasos",sub:"Greetings, numbers, ser and estar",deck:[
+["hola","hello","ciao","bună","The h is silent."],
+["buenos días","good morning","buongiorno","bună dimineața","Used until around noon."],
+["buenas tardes","good afternoon","buon pomeriggio","bună ziua","From noon until dark."],
+["buenas noches","good evening / good night","buonasera / buonanotte","bună seara / noapte bună","One phrase for both hello and goodbye at night."],
+["por favor","please","per favore","te rog / vă rog","Same pattern as Italian per favore."],
+["gracias","thank you","grazie","mulțumesc","Gracias and grazie share the same Latin root."],
+["de nada","you're welcome","prego","cu plăcere","Literally 'of nothing'."],
+["perdón","sorry / excuse me","scusa / scusi","scuze / iertare",""],
+["sí","yes","sì","da","With the accent. Without it, si means 'if'."],
+["no","no","no","nu",""],
+["adiós","goodbye","ciao / arrivederci","la revedere","Literally 'to God'."],
+["hasta luego","see you later","a dopo","pe curând",""],
+["¿cómo estás?","how are you?","come stai?","ce mai faci?","Formal version: ¿cómo está usted?"],
+["bien","well / fine","bene","bine",""],
+["me llamo…","my name is…","mi chiamo…","mă numesc… / mă cheamă…","Reflexive, just like Italian mi chiamo."],
+["mucho gusto","nice to meet you","piacere","încântat / încântată","Literally 'much pleasure'."],
+["no entiendo","I don't understand","non capisco","nu înțeleg",""],
+["¿habla inglés?","do you speak English?","parla inglese?","vorbiți engleza?","Formal usted form, the safe choice with strangers."],
+["el agua","water","l'acqua","apă","Feminine, but takes el because it starts with a stressed a: el agua fría."],
+["uno","one","uno","unu",""],
+["dos","two","due","doi",""],
+["tres","three","tre","trei",""],
+["cuatro","four","quattro","patru","Closer to Italian quattro; Romanian patru shares the qu-/p- shift."],
+["cinco","five","cinque","cinci",""],
+["seis","six","sei","șase",""],
+["siete","seven","sette","șapte",""],
+["ocho","eight","otto","opt","Ocho, otto and opt all come from Latin octo."],
+["nueve","nine","nove","nouă",""],
+["diez","ten","dieci","zece",""],
+["yo","I","io","eu","Usually dropped: soy de México, not yo soy de México."],
+["tú","you (informal)","tu","tu","With the accent. Without it, tu means 'your'."],
+["usted","you (formal)","Lei","dumneavoastră","Used a lot in Mexico, even with older relatives."],
+["ustedes","you all","voi","voi","In Mexico always ustedes. No vosotros here."],
+["nosotros","we","noi","noi",""],
+["ser","to be (identity, origin, traits)","essere","a fi","Spanish splits 'to be' in two: ser and estar."],
+["estar","to be (state, location)","stare / essere","a fi / a se afla","Like Italian stare in sto bene."],
+["soy","I am (ser)","sono","sunt","Soy de México."],
+["estoy","I am (estar)","sto / sono","sunt","Estoy bien."]
+]},
+{n:2,cls:"l2",emo:"🌽",name:"Día a día",sub:"Food, directions, family, days, key verbs",deck:[
+["comer","to eat","mangiare","a mânca",""],
+["tomar","to drink (also: to take)","bere / prendere","a bea / a lua","Beber exists, but tomar is the everyday word."],
+["tengo hambre","I'm hungry","ho fame","mi-e foame","Literally 'I have hunger', same structure as Italian."],
+["tengo sed","I'm thirsty","ho sete","mi-e sete",""],
+["la cuenta, por favor","the check, please","il conto, per favore","nota de plată, vă rog",""],
+["¿cuánto cuesta?","how much is it?","quanto costa?","cât costă?",""],
+["caro","expensive","caro","scump","Same double meaning as Italian caro."],
+["barato","cheap","economico","ieftin",""],
+["la leche","milk","il latte","lapte","Leche, latte and lapte all come from Latin lac."],
+["el pan","bread","il pane","pâine",""],
+["el pollo","chicken","il pollo","pui",""],
+["el queso","cheese","il formaggio","brânză / caș","Queso and Romanian caș both come from Latin caseus."],
+["la manzana","apple","la mela","măr",""],
+["la cerveza","beer","la birra","bere",""],
+["el vino","wine","il vino","vin",""],
+["el café","coffee","il caffè","cafea",""],
+["la calle","street","la strada","stradă","Not strada. Say calle."],
+["a la izquierda","to the left","a sinistra","la stânga",""],
+["a la derecha","to the right","a destra","la dreapta","Derecha also means 'correct'."],
+["todo derecho","straight ahead","sempre dritto","drept înainte",""],
+["aquí","here","qui","aici",""],
+["allá","over there","là","acolo",""],
+["el baño","bathroom","il bagno","baie","In Mexico baño is the normal word for restroom."],
+["¿dónde está…?","where is…?","dov'è…?","unde este…?",""],
+["el hermano","brother","il fratello","frate","Hermano is from Latin germanus, not frater."],
+["la hermana","sister","la sorella","soră",""],
+["papá","dad","papà","tata","Mexicans say papá and mamá at any age."],
+["mamá","mom","mamma","mama",""],
+["hoy","today","oggi","azi",""],
+["mañana","tomorrow / morning","domani / mattina","mâine / dimineață","Mañana and mâine both trace back to Latin mane."],
+["ayer","yesterday","ieri","ieri","Ayer comes from Latin heri, same source as ieri."],
+["ahora","now","adesso / ora","acum",""],
+["lunes","Monday","lunedì","luni","Days are not capitalised in Spanish."],
+["martes","Tuesday","martedì","marți",""],
+["miércoles","Wednesday","mercoledì","miercuri",""],
+["jueves","Thursday","giovedì","joi",""],
+["viernes","Friday","venerdì","vineri",""],
+["sábado","Saturday","sabato","sâmbătă",""],
+["domingo","Sunday","domenica","duminică",""],
+["tener","to have (possess)","avere","a avea","Also for age: tengo veinte años. Don't confuse with Romanian a ține (to hold)."],
+["querer","to want / to love","volere / amare","a vrea / a iubi","Te quiero is a casual 'I love you'."],
+["poder","to be able to","potere","a putea",""],
+["ir","to go","andare","a merge","Irregular: voy, vas, va, vamos, van."],
+["hacer","to do / to make","fare","a face","Hace, fa and face come from Latin facere."],
+["ver","to see","vedere","a vedea",""],
+["el trabajo","work","il lavoro","muncă / serviciu",""]
+]},
+{n:3,cls:"l3",emo:"🌶️",name:"Calle y sabor",sub:"Mexican slang, street food, everyday words",deck:[
+["¿qué onda?","what's up?","che si dice?","ce mai e nou?","Casual greeting between friends."],
+["chido","cool","figo","mișto","Feminine: chida."],
+["¡qué padre!","how cool!","che figata!","ce mișto!","Padre as 'great' is very Mexican."],
+["órale","okay! / wow! / come on!","dai! / ok!","hai! / ok!","One word, many moods. Context decides."],
+["¿mande?","pardon?","come? / prego?","poftim?","Polite 'what did you say?'. Romanian poftim does the same job."],
+["ahorita","right now… or later","adesso (più o meno)","acum (sau mai târziu)","Elastic time: could be two minutes or two hours."],
+["el güey","dude","il tipo / amico","frate / omule","Friends only. Often written wey."],
+["no manches","no way!","non ci credo!","nu se poate!","Mild, family-friendly exclamation."],
+["¿neta?","for real?","davvero?","pe bune?","La neta = the honest truth."],
+["la chamba","job (slang)","il lavoro","munca / jobul","Chambear = to work."],
+["la lana","money (slang)","la grana / i soldi","lovele / bani","Literally 'wool'."],
+["el camión","bus","l'autobus","autobuz","In Mexico a camión is a bus. In Spain it's a truck."],
+["el carro","car","la macchina","mașina","Spain says coche."],
+["platicar","to chat","chiacchierare","a sta de vorbă","Hablar = speak. Platicar = have a conversation."],
+["la banqueta","sidewalk","il marciapiede","trotuar","Spain says acera."],
+["el celular","cell phone","il cellulare","telefon mobil","Italian cellulare helps. Spain says móvil."],
+["la computadora","computer","il computer","calculator","Spain says ordenador."],
+["el jugo","juice","il succo","suc","Spain says zumo."],
+["¡provecho!","enjoy your meal!","buon appetito!","poftă bună!","Said even to strangers who are eating."],
+["¡salud!","bless you! / cheers!","salute!","sănătate!",""],
+["¡ándale!","come on! / exactly!","dai! / esatto!","hai! / exact!",""],
+["el chavo","guy (young)","il ragazzo","băiat","Feminine: la chava."],
+["¿bueno?","hello? (answering the phone)","pronto?","alo?","Mexicans answer the phone with bueno."],
+["mijo","my dear (to a child or friend)","tesoro","puiule","Short for mi hijo. Feminine: mija."],
+["la cruda","hangover","i postumi della sbornia","mahmureală","Literally 'the raw one'."],
+["echarle ganas","to give it your best","metterci impegno","a se strădui","A classic encouragement: ¡échale ganas!"],
+["¿me regala…?","could I have…? (ordering)","mi dà…?","îmi dați…?","Literally 'will you gift me…'. The polite way to order."],
+["la propina","tip","la mancia","bacșiș","Usually 10 to 15 percent in restaurants."],
+["el antojito","street snack","lo stuzzichino","o gustare","Tacos, quesadillas, sopes: anything you crave."],
+["el tianguis","street market","il mercato rionale","piață","From Nahuatl."],
+["la torta","sandwich","il panino","sandviș","Not cake here. Cake is pastel."],
+["el elote","corn on the cob","la pannocchia","știulete de porumb","From Nahuatl elotl."],
+["los frijoles","beans","i fagioli","fasole","Frijoles and fagioli sound alike."],
+["la salsa","sauce (often spicy)","la salsa","sos",""],
+["picante","spicy","piccante","picant",""],
+["el limón","lime","il lime","lămâie verde / lime","In Mexico limón is a lime. A lemon is limón amarillo."],
+["tantito","a little bit","un pochino","puțin","The -ito ending shrinks things and softens requests."],
+["¿cómo no?","of course!","certo!","sigur!","Sounds negative but means yes."]
+]},
+{n:4,cls:"l4",emo:"🦅",name:"Frases y gramática",sub:"Whole sentences, past, future, subjunctive",deck:[
+["Voy a comer tacos.","I'm going to eat tacos.","Sto per mangiare dei tacos.","O să mănânc tacos.","ir a + infinitive is the everyday future."],
+["Ayer fui al mercado.","Yesterday I went to the market.","Ieri sono andato al mercato.","Ieri am mers la piață.","The pretérito is Mexico's default for finished past."],
+["¿Ya comiste?","Have you eaten yet?","Hai già mangiato?","Ai mâncat deja?","Mexico uses the pretérito here. Spain would say ¿Ya has comido?"],
+["Tengo veinte años.","I'm twenty years old.","Ho vent'anni.","Am douăzeci de ani.","Age uses tener, like Italian avere and Romanian a avea."],
+["Me gusta el café.","I like coffee.","Mi piace il caffè.","Îmi place cafeaua.","Gustar works like piacere and a plăcea: the thing liked is the subject."],
+["Me gustan los tacos.","I like tacos.","Mi piacciono i tacos.","Îmi plac tacoșii.","The verb agrees with what you like."],
+["Estoy cansado.","I'm tired.","Sono stanco.","Sunt obosit.","Temporary state: estar."],
+["Soy de México.","I'm from Mexico.","Sono del Messico.","Sunt din Mexic.","Origin: ser."],
+["Mi mamá es doctora.","My mom is a doctor.","Mia madre è dottoressa.","Mama mea este doctoriță.","No article before professions."],
+["¿Qué quieres hacer?","What do you want to do?","Cosa vuoi fare?","Ce vrei să faci?",""],
+["Quiero que vengas.","I want you to come.","Voglio che tu venga.","Vreau să vii.","Subjunctive. Your congiuntivo and conjunctiv instincts apply."],
+["Espero que estés bien.","I hope you're well.","Spero che tu stia bene.","Sper să fii bine.","Esperar que + subjunctive."],
+["Ojalá que llueva.","I hope it rains.","Speriamo che piova.","Sper să plouă.","Ojalá is a stronger wish and always takes the subjunctive."],
+["No tengo nada.","I have nothing.","Non ho niente.","N-am nimic.","Double negatives are normal, same as in Italian and Romanian."],
+["Ustedes son muy amables.","You all are very kind.","Voi siete molto gentili.","Voi sunteți foarte amabili.","Ustedes takes the third-person plural verb."],
+["¿Podría ayudarme?","Could you help me?","Potrebbe aiutarmi?","Ați putea să mă ajutați?","The conditional makes a request polite."],
+["Se me olvidó.","I forgot.","Me ne sono dimenticato.","Mi-a ieșit din cap.","Literally 'it forgot itself on me'. Spanish blames the thing, not you."],
+["Hace calor.","It's hot.","Fa caldo.","E cald.","Weather uses hacer, like Italian fare."],
+["Hace dos años.","Two years ago.","Due anni fa.","Acum doi ani.","Hace + time = ago."],
+["Llevo tres meses estudiando español.","I've been studying Spanish for three months.","Studio spagnolo da tre mesi.","Învăț spaniola de trei luni.","llevar + time + gerund."],
+["Dame un momento.","Give me a moment.","Dammi un attimo.","Dă-mi un moment.",""],
+["Ya casi llego.","I'm almost there.","Sto arrivando.","Ajung imediat.","Ya casi = almost. Very common when running late."],
+["¿Cómo se dice…?","How do you say…?","Come si dice…?","Cum se spune…?","Your best survival phrase."],
+["Más despacio, por favor.","Slower, please.","Più lentamente, per favore.","Mai încet, vă rog.",""],
+["¿Puede repetir, por favor?","Can you repeat that, please?","Può ripetere, per favore?","Puteți repeta, vă rog?",""],
+["Lo siento mucho.","I'm very sorry.","Mi dispiace molto.","Îmi pare foarte rău.","Sentir = to feel. Lo siento = I feel it."],
+["Con permiso.","Excuse me (passing by).","Permesso.","Scuzați-mă.","Said when squeezing past someone."],
+["Que te vaya bien.","Take care. (May it go well for you.)","Che ti vada bene.","Să-ți meargă bine.","A subjunctive farewell, same as in Italian and Romanian."],
+["Estoy buscando un baño.","I'm looking for a bathroom.","Sto cercando un bagno.","Caut o toaletă.","estar + gerund for ongoing actions."],
+["No sé.","I don't know.","Non so.","Nu știu.","Irregular: yo sé."],
+["Creo que sí.","I think so.","Credo di sì.","Cred că da.",""]
+]},
+{n:5,cls:"l5",emo:"🕰️",name:"Pasado y presente",sub:"Preterite vs imperfect, pronouns, por vs para, subjunctive",deck:[
+["Cuando era niño, jugaba en la calle.","When I was a kid, I used to play in the street.","Quando ero bambino, giocavo per strada.","Când eram copil, mă jucam pe stradă.","The imperfect = habitual past. Same job as Italian imperfetto and Romanian imperfect."],
+["Ayer llovió todo el día.","Yesterday it rained all day.","Ieri ha piovuto tutto il giorno.","Ieri a plouat toată ziua.","A completed span of time takes the pretérito, even if it was long."],
+["Estaba cocinando cuando llegaste.","I was cooking when you arrived.","Stavo cucinando quando sei arrivato.","Gătem când ai venit.","Imperfect for the background, pretérito for the interruption."],
+["Fui al cine y vi una película increíble.","I went to the movies and saw an incredible film.","Sono andato al cinema e ho visto un film incredibile.","Am fost la cinema și am văzut un film incredibil.","Fui is the pretérito of both ir and ser."],
+["No pude venir porque tuve que trabajar.","I couldn't come because I had to work.","Non ho potuto venire perché ho dovuto lavorare.","Nu am putut veni pentru că a trebuit să muncesc.","Irregular pretérito stems: pude, tuve."],
+["Se lo dije ayer.","I told him yesterday.","Gliel'ho detto ieri.","I-am spus ieri.","le + lo becomes se lo. Same shift as Italian glielo."],
+["¿Me lo puedes mandar?","Can you send it to me?","Me lo puoi mandare?","Poți să mi-l trimiți?","Indirect pronoun first, then direct: me lo."],
+["Dámelo, por favor.","Give it to me, please.","Dammelo, per favore.","Dă-mi-l, te rog.","Pronouns attach to the end of a command. Note the written accent."],
+["Lo vi en el mercado.","I saw it at the market.","L'ho visto al mercato.","L-am văzut la piață.",""],
+["Esto es para ti.","This is for you.","Questo è per te.","Asta este pentru tine.","Para = recipient or purpose."],
+["Gracias por tu ayuda.","Thanks for your help.","Grazie per il tuo aiuto.","Mulțumesc pentru ajutorul tău.","Por = cause or reason."],
+["Trabajo para una empresa grande.","I work for a big company.","Lavoro per una grande azienda.","Lucrez pentru o companie mare.","Para = the one you work for."],
+["Voy por el pan.","I'm going to get the bread.","Vado a prendere il pane.","Mă duc după pâine.","Ir por = go and fetch."],
+["Salimos por la mañana.","We leave in the morning.","Partiamo la mattina.","Plecăm dimineața.","Mexicans also say en la mañana."],
+["Ya lo había hecho.","I had already done it.","Lo avevo già fatto.","Îl făcusem deja.","Pluperfect: haber in the imperfect + participle."],
+["Hace años que vivo aquí.","I've lived here for years.","Vivo qui da anni.","Locuiesc aici de ani.","Present tense for something that started in the past and continues."],
+["Si tuviera tiempo, viajaría más.","If I had time, I'd travel more.","Se avessi tempo, viaggerei di più.","Dacă aș avea timp, aș călători mai mult.","Imperfect subjunctive + conditional. Maps almost one-to-one onto Italian."],
+["Me dijo que vendría mañana.","He told me he would come tomorrow.","Mi ha detto che sarebbe venuto domani.","Mi-a spus că va veni mâine.","Conditional for the future seen from the past."],
+["Cuando llegues, llámame.","When you arrive, call me.","Quando arrivi, chiamami.","Când ajungi, sună-mă.","Cuando + subjunctive for a future event that hasn't happened yet."],
+["Es importante que estudies todos los días.","It's important that you study every day.","È importante che tu studi ogni giorno.","Este important să înveți în fiecare zi.","Impersonal opinions trigger the subjunctive."],
+["Dudo que tenga razón.","I doubt he's right.","Dubito che abbia ragione.","Mă îndoiesc că are dreptate.","Doubt triggers the subjunctive. Romanian doesn't need it here, so watch out."],
+["Me alegra que hayas venido.","I'm glad you came.","Mi fa piacere che tu sia venuto.","Mă bucur că ai venit.","Emotion + que + perfect subjunctive."],
+["Tienes que ir al doctor.","You have to go to the doctor.","Devi andare dal dottore.","Trebuie să mergi la doctor.","tener que + infinitive = obligation."],
+["Acabo de llegar.","I just arrived.","Sono appena arrivato.","Tocmai am ajuns.","acabar de + infinitive = just did."],
+["Sigo aprendiendo.","I keep learning.","Continuo a imparare.","Continui să învăț.","seguir + gerund = keep doing."],
+["Se me hizo tarde.","I ran late.","Si è fatto tardi.","S-a făcut târziu.","Hacerse tarde = to get late."],
+["¿Qué te pareció la película?","What did you think of the movie?","Che te ne è parso del film?","Cum ți s-a părut filmul?","Parecer works like parere and a părea."],
+["Me cae bien.","I like him as a person.","Mi sta simpatico.","Îmi este simpatic.","Caer bien = to get along with / to find likeable. Very Mexican."],
+["Llévatelo.","Take it with you.","Portalo con te.","Ia-l cu tine.","Stress shifts, so the accent appears."],
+["Más vale tarde que nunca.","Better late than never.","Meglio tardi che mai.","Mai bine mai târziu decât niciodată.","Proverbs are great for rhythm."]
+]},
+{n:6,cls:"l6",emo:"💀",name:"Mexicano de verdad",sub:"Idioms, formal register, how people really talk",deck:[
+["Me late que va a llover.","I have a feeling it's going to rain.","Ho la sensazione che pioverà.","Am senzația că o să plouă.","Latir = to beat (a heart). Me late = my gut says."],
+["Ni modo.","Oh well.","Pazienza.","Ce să-i faci.","The classic Mexican shrug."],
+["Estás en la luna.","You're daydreaming.","Sei sulle nuvole.","Ești cu capul în nori.","Literally 'you're on the moon'."],
+["Se me hace que no viene.","I think he won't come.","Mi sa che non viene.","Mi se pare că nu vine.","Se me hace que = it seems to me that."],
+["No me hagas caso.","Don't listen to me.","Non darmi retta.","Nu mă asculta.","Hacer caso = to pay attention to."],
+["Aguas con el escalón.","Watch out for the step.","Attenzione al gradino.","Atenție la treaptă.","¡Aguas! is the everyday way to say watch out."],
+["Ándale, ya vámonos.","Come on, let's go already.","Dai, andiamo.","Hai, să mergem odată.","Vámonos = let's go (reflexive)."],
+["Qué flojera.","Ugh, I can't be bothered.","Che pigrizia.","Ce lene.","Flojera = laziness."],
+["Le dio un coraje terrible.","He got furious.","Si è arrabbiato tantissimo.","S-a înfuriat grozav.","Dar coraje = to make angry. In Mexico coraje means anger."],
+["Ya merito llegamos.","We're almost there.","Ci siamo quasi.","Aproape am ajuns.","Ya merito = softer form of ya mero."],
+["Está bien padre este lugar.","This place is really cool.","Questo posto è fighissimo.","Locul ăsta e foarte mișto.","Bien here means very."],
+["Échame la mano.","Give me a hand.","Dammi una mano.","Dă-mi o mână de ajutor.","Literally 'throw me the hand'."],
+["Se armó un relajo.","A big mess broke out.","È scoppiato il caos.","A ieșit o harababură.","Relajo = noisy chaos."],
+["¿Qué me cuentas?","What's new with you?","Che mi racconti?","Ce-mi povestești?","Contar = to tell, as in tell a story."],
+["No le hace.","It doesn't matter.","Non importa.","Nu contează.","Very Mexican. Spain says no importa."],
+["¿Cómo ves?","What do you think?","Che ne dici?","Tu ce zici?","Literally 'how do you see it?'."],
+["Estuvo cañón el examen.","The exam was brutal.","L'esame è stato tosto.","Examenul a fost greu.","Cañón = tough, intense."],
+["Me cayó el veinte.","It finally clicked.","Mi si è accesa la lampadina.","Mi s-a aprins becul.","From payphones: the 20-centavo coin finally dropped."],
+["No tiene caso.","There's no point.","Non ha senso.","Nu are rost.",""],
+["Ni de chiste.","No way.","Neanche per scherzo.","Nici vorbă.","Literally 'not even as a joke'."],
+["Me da pena.","I'm embarrassed.","Mi vergogno.","Mi-e rușine.","In Mexico pena = embarrassment, not just sorrow."],
+["Ya párale.","Stop it already.","Basta ora.","Gata, oprește-te.","Parar + le: casual command."],
+["Ahorita vengo.","I'll be right back.","Torno subito.","Mă întorc imediat.","In Mexico venir often means 'come back'."],
+["Mi casa es su casa.","My house is your house.","La mia casa è casa tua.","Casa mea e casa ta.","Uses formal su, even among friends."],
+["Con mucho gusto.","With pleasure.","Con piacere.","Cu plăcere.","A warmer reply than de nada."],
+["¿A poco?","Really? No kidding?","Davvero?","Chiar așa?","A poco is pure reaction. Don't translate it word by word."],
+["Me muero de hambre.","I'm starving.","Sto morendo di fame.","Mor de foame.","Morirse de + noun = to be dying of."],
+["Quédese con el cambio.","Keep the change.","Tenga il resto.","Păstrați restul.","Formal command: usted + subjunctive form."],
+["Pásele, joven.","Come on in! (vendor's call)","Prego, si accomodi.","Poftiți, domnule.","What market sellers say to every passer-by."],
+["¿Qué se le ofrece?","How can I help you?","Che cosa desidera?","Cu ce vă pot ajuta?","Literally 'what is offered to you?'. Shop and restaurant staple."]
+]},
+{n:7,cls:"l1",emo:"🏡",name:"Conoce a la familia",sub:"In-laws, first meetings, tú vs usted, asking for help",deck:[
+["la suegra","mother-in-law","la suocera","soacră","Masculine: el suegro."],
+["el suegro","father-in-law","il suocero","socru",""],
+["los suegros","parents-in-law","i suoceri","socrii","The masculine plural covers both."],
+["el cuñado","brother-in-law","il cognato","cumnat",""],
+["la cuñada","sister-in-law","la cognata","cumnată",""],
+["la nuera","daughter-in-law","la nuora","noră","What his parents may call you."],
+["el yerno","son-in-law","il genero","ginere",""],
+["el prometido","fiancé","il fidanzato","logodnic",""],
+["la prometida","fiancée","la fidanzata","logodnică",""],
+["el esposo","husband","il marito","soț","Also marido. Esposo sounds a little more formal."],
+["la esposa","wife","la moglie","soție",""],
+["el abuelo","grandfather","il nonno","bunic","Affectionately: abuelito."],
+["la abuela","grandmother","la nonna","bunică","Affectionately: abuelita."],
+["el tío","uncle","lo zio","unchi",""],
+["la tía","aunt","la zia","mătușă",""],
+["el primo","cousin (male)","il cugino","văr",""],
+["la prima","cousin (female)","la cugina","verișoară",""],
+["el sobrino","nephew","il nipote","nepot",""],
+["la sobrina","niece","la nipote","nepoată",""],
+["el hijo","son","il figlio","fiu",""],
+["la hija","daughter","la figlia","fiică",""],
+["los padrinos","godparents (and wedding sponsors)","i padrini","nașii","Padrinos matter a lot in Mexican families and weddings."],
+["el compadre","co-parent through godparenting; close friend","il compare","cumătru","Compadre and comadre are the bond between parents and godparents."],
+["la comadre","female compadre","la comare","cumătră",""],
+["doña","respectful title before a woman's first name","signora (titolo di rispetto)","doamna","Doña Rosa. Used for older women."],
+["don","respectful title before a man's first name","signor (titolo di rispetto)","domnul","Don Luis. Used for older men."],
+["Mucho gusto en conocerla, señora.","Pleased to meet you, ma'am.","Piacere di conoscerla, signora.","Încântată să vă cunosc, doamnă.","La = you (formal, feminine). For a man: conocerlo."],
+["Me da mucho gusto conocerlos a todos.","I'm so glad to meet you all.","Sono felice di conoscervi tutti.","Mă bucur să vă cunosc pe toți.","Los = you all. Dar gusto = to please."],
+["Gracias por recibirme en su casa.","Thank you for welcoming me into your home.","Grazie per avermi accolta a casa vostra.","Vă mulțumesc că m-ați primit în casa dumneavoastră.","Su = your (formal, or plural)."],
+["Su casa está muy bonita.","Your home is lovely.","La vostra casa è molto bella.","Casa dumneavoastră este foarte frumoasă.","Bonito/a is a very common compliment."],
+["Soy la prometida de su hijo.","I'm your son's fiancée.","Sono la fidanzata di vostro figlio.","Sunt logodnica fiului dumneavoastră.",""],
+["Estoy aprendiendo español para hablar con ustedes.","I'm learning Spanish to talk with you all.","Sto imparando lo spagnolo per parlare con voi.","Învăț spaniola ca să pot vorbi cu dumneavoastră.","Para + infinitive = in order to."],
+["Perdón por mis errores, todavía estoy aprendiendo.","Sorry for my mistakes, I'm still learning.","Scusate per i miei errori, sto ancora imparando.","Scuzați-mi greșelile, încă învăț.","Todavía = still."],
+["¿Me puede corregir si me equivoco?","Could you correct me if I make a mistake?","Può correggermi se sbaglio?","Mă puteți corecta dacă greșesc?","Equivocarse = to make a mistake."],
+["Hablo poco español, pero le echo ganas.","I speak little Spanish, but I'm giving it my all.","Parlo poco spagnolo, ma ce la metto tutta.","Vorbesc puțin spaniolă, dar mă străduiesc.","Echarle ganas is the phrase that wins hearts."],
+["No entendí. ¿Me lo puede explicar otra vez?","I didn't understand. Can you explain it again?","Non ho capito. Può spiegarmelo di nuovo?","N-am înțeles. Puteți să-mi explicați din nou?","Entendí = pretérito: I didn't get it just now."],
+["¿Cómo prefiere que le diga?","What would you like me to call you?","Come preferisce che la chiami?","Cum preferați să vă spun?","Preferir que + subjunctive (diga)."],
+["¿Puedo hablarle de tú?","May I use tú with you?","Posso darle del tu?","Pot să vă tutuiesc?","Many families stay with usted for a long time. Wait for the offer, or ask like this."],
+["Háblame de tú, por favor.","Please use tú with me.","Dammi del tu, per favore.","Tutuiește-mă, te rog.","What an older relative might say to put you at ease."],
+["Es un placer estar aquí.","It's a pleasure to be here.","È un piacere essere qui.","Este o plăcere să fiu aici.",""],
+["Todos han sido muy amables conmigo.","Everyone has been very kind to me.","Tutti sono stati molto gentili con me.","Toți au fost foarte amabili cu mine.","Conmigo = con + mí."],
+["¿Cuántos hermanos tiene?","How many siblings do you have?","Quanti fratelli ha?","Câți frați aveți?","Hermanos covers brothers and sisters together."],
+["Mi familia vive lejos.","My family lives far away.","La mia famiglia vive lontano.","Familia mea locuiește departe.","Lejos = far. Cerca = near."],
+["Tengo muchas ganas de conocer a toda la familia.","I'm really looking forward to meeting the whole family.","Non vedo l'ora di conoscere tutta la famiglia.","Abia aștept să cunosc toată familia.","Tener ganas de = to look forward to. Note the personal a before people."]
+]},
+{n:8,cls:"l2",emo:"🍲",name:"A la mesa",sub:"Eating with the family, compliments, helping, food words",deck:[
+["¿Ya comió?","Have you eaten yet? (formal)","Ha già mangiato?","Ați mâncat deja?","The first question many Mexican hosts ask. It's how they show care."],
+["Siéntese, está en su casa.","Sit down, make yourself at home.","Si sieda, faccia come a casa sua.","Luați loc, simțiți-vă ca acasă.","Está en su casa is the standard welcome."],
+["¿Gusta?","Would you like some? (said to people near you as you eat)","Gradisce?","Poftiți!","If you don't want any, reply: ¡gracias, provecho!"],
+["¿Le sirvo más?","Shall I serve you more?","Gliene servo ancora?","Vă mai servesc?","Le = to you (formal)."],
+["Está muy rico.","It's really tasty.","È buonissimo.","E foarte bun.","Rico = tasty when talking about food."],
+["Estoy llena.","I'm full. (said by a woman)","Sono piena.","Sunt sătulă.","Men say lleno. Hosts may insist on seconds, so say it with a smile."],
+["Ya no puedo más, gracias.","I can't eat any more, thank you.","Non ce la faccio più, grazie.","Nu mai pot, mulțumesc.",""],
+["Un poquito más, por favor.","Just a little more, please.","Ancora un pochino, per favore.","Încă puțin, vă rog.","Poquito: the diminutive softens a request."],
+["¿Quién cocinó esto?","Who cooked this?","Chi ha cucinato questo?","Cine a gătit asta?",""],
+["¿Me da la receta?","Could you give me the recipe?","Mi dà la ricetta?","Îmi dați rețeta?","Asking for a family recipe is a real compliment."],
+["Me gustaría aprender a cocinar esto.","I'd like to learn to cook this.","Mi piacerebbe imparare a cucinarlo.","Mi-ar plăcea să învăț să gătesc asta.","Me gustaría = polite conditional of gustar."],
+["¿Le ayudo con los platos?","Can I help you with the dishes?","La aiuto con i piatti?","Vă ajut cu vasele?","Offering to help is always noticed."],
+["¿Puedo ayudar a poner la mesa?","May I help set the table?","Posso aiutare ad apparecchiare?","Pot să vă ajut să punem masa?","Poner la mesa = to set the table."],
+["la sobremesa","the long chat after a meal","la chiacchierata dopo il pasto","conversația de după masă","The meal isn't over when the plates are empty. Stay and talk."],
+["el pozole","hominy and pork stew","il pozole (zuppa di mais e maiale)","pozole (supă de porumb cu porc)","Often served at celebrations."],
+["los tamales","steamed corn-dough parcels","i tamales","tamales","Popular at Christmas and on Candlemas (February 2)."],
+["el mole","rich sauce of chiles, spices and often chocolate","il mole (salsa di peperoncino e cioccolato)","mole (sos de ardei iute și ciocolată)","Pronounced MO-leh."],
+["el arroz","rice","il riso","orez",""],
+["la sopa","soup (also a course of rice or pasta)","la zuppa","supă","A sopa seca is a dry course like rice or pasta."],
+["el postre","dessert","il dolce","desert",""],
+["el agua fresca","fruit-flavoured cold drink","la bevanda fresca alla frutta","băutură răcoritoare cu fructe","Jamaica, horchata, tamarindo: all aguas frescas."],
+["la tortilla","flatbread (corn or flour)","la tortilla","tortilla","In Mexico, tortilla is flatbread. A potato omelette is tortilla española."],
+["¿Esto pica mucho?","Is this very spicy?","È molto piccante?","E foarte picant?","Picar = to sting, to be hot. Ask before you bite."],
+["No aguanto el picante.","I can't handle spicy food.","Non sopporto il piccante.","Nu suport mâncarea iute.","Aguantar = to put up with."],
+["Soy alérgica a…","I'm allergic to… (said by a woman)","Sono allergica a…","Sunt alergică la…","Tell the host early, not mid-meal."],
+["No como carne.","I don't eat meat.","Non mangio carne.","Nu mănânc carne.","Say it early and kindly. Hosts will want to adapt."],
+["¡Brindemos!","Let's make a toast!","Brindiamo!","Să închinăm un pahar!","Brindar = to toast."],
+["Gracias por la comida, estuvo deliciosa.","Thank you for the meal, it was delicious.","Grazie per il pranzo, era delizioso.","Mulțumesc pentru masă, a fost delicioasă.","Estuvo = pretérito of estar, for a finished event."]
+]},
+{n:9,cls:"l3",emo:"🎉",name:"Fiestas y tradiciones",sub:"Birthdays, Christmas, Day of the Dead, weddings",deck:[
+["¡Feliz cumpleaños!","Happy birthday!","Buon compleanno!","La mulți ani!","The traditional song is Las mañanitas."],
+["las mañanitas","the traditional birthday song","la canzone tradizionale di compleanno","cântecul tradițional de ziua de naștere","Often sung early in the morning."],
+["¡Feliz Navidad!","Merry Christmas!","Buon Natale!","Crăciun fericit!",""],
+["la Nochebuena","Christmas Eve","la vigilia di Natale","Ajunul Crăciunului","The main family celebration of Christmas."],
+["las posadas","nine nights of pre-Christmas parties (Dec 16 to 24)","le posadas (nove sere di feste prima di Natale)","posadas (nouă seri de petreceri înainte de Crăciun)","Songs, candles, food and a piñata."],
+["la piñata","piñata","la pignatta","piñata","The word may come from Italian pignatta, a clay pot."],
+["el Año Nuevo","New Year","il Capodanno","Anul Nou",""],
+["las doce uvas","twelve grapes at midnight","i dodici chicchi d'uva","cele douăsprezece boabe de strugure","One grape per chime, with a wish for each."],
+["el Día de Muertos","Day of the Dead","il Giorno dei Morti","Ziua Morților","November 1 and 2. A loving remembrance, not a Mexican Halloween."],
+["la ofrenda","altar for the dead","l'altare per i defunti","altarul pentru morți","Photos, flowers, food and favourite things of those remembered."],
+["el pan de muerto","bread of the dead","il pane dei morti","pâinea morților",""],
+["la quinceañera","girl's fifteenth-birthday celebration","la festa dei quindici anni","petrecerea de 15 ani","Means both the party and the girl."],
+["la boda","wedding","il matrimonio","nunta",""],
+["los novios","the bride and groom","gli sposi","mirii","Outside a wedding it also means boyfriend and girlfriend."],
+["los padrinos de boda","wedding sponsors","i padrini di nozze","nașii de nuntă","Each can sponsor something: the rings, the cake, the music."],
+["el mariachi","mariachi band","il mariachi","mariachi",""],
+["el brindis","toast","il brindisi","toast",""],
+["el pastel","cake","la torta","tort","Here pastel = cake. A torta is a sandwich in Mexico."],
+["los regalos","gifts","i regali","cadourile",""],
+["¡Felicidades!","Congratulations!","Congratulazioni!","Felicitări!","Also said on birthdays."],
+["Que Dios los bendiga.","May God bless you all.","Che Dio vi benedica.","Dumnezeu să vă binecuvânteze.","A warm, common blessing."],
+["Gracias por invitarme.","Thank you for inviting me.","Grazie dell'invito.","Mulțumesc pentru invitație.",""],
+["¿A qué hora empieza la fiesta?","What time does the party start?","A che ora inizia la festa?","La ce oră începe petrecerea?","Worth asking, since party times can be loose."],
+["¿Qué debo llevar?","What should I bring?","Cosa devo portare?","Ce ar trebui să aduc?","Deber = should / must."],
+["Llevo postre.","I'll bring dessert.","Porto il dolce.","Aduc desert.","Present tense for a plan."],
+["Vamos a bailar.","Let's dance.","Andiamo a ballare.","Hai să dansăm.","Vamos a + infinitive also means let's."],
+["Nos vemos en Navidad.","See you at Christmas.","Ci vediamo a Natale.","Ne vedem de Crăciun.",""]
+]},
+{n:10,cls:"l4",emo:"💛",name:"Cariño y confianza",sub:"Affection, reassurance, saying sorry, texting",deck:[
+["mi amor","my love","amore mio","iubitule / iubito","Used between partners, and often with kids too."],
+["mi vida","my life (endearment)","vita mia","viața mea",""],
+["cariño","sweetheart","tesoro","dragă","Used by partners, family, even shopkeepers."],
+["te extraño","I miss you","mi manchi","mi-e dor de tine","Mexico: extrañar. Spain also says echar de menos."],
+["te quiero","I love you (warm, everyday)","ti voglio bene","țin la tine","Used for partners, family and friends."],
+["te amo","I love you (deep, romantic)","ti amo","te iubesc","Heavier than te quiero."],
+["Estoy enamorada de ti.","I'm in love with you.","Sono innamorata di te.","Sunt îndrăgostită de tine.","Men say enamorado."],
+["Me haces muy feliz.","You make me very happy.","Mi rendi molto felice.","Mă faci foarte fericită.","Hacer + adjective."],
+["Quiero pasar mi vida contigo.","I want to spend my life with you.","Voglio passare la vita con te.","Vreau să-mi petrec viața cu tine.","Contigo = con + ti."],
+["Nos vamos a casar.","We're getting married.","Ci sposeremo.","Ne căsătorim.","Casarse is reflexive."],
+["Estoy nerviosa por conocer a tu familia.","I'm nervous about meeting your family.","Sono nervosa all'idea di conoscere la tua famiglia.","Sunt emoționată să-ți cunosc familia.","Tu = informal, to your partner."],
+["¿Qué piensa tu mamá de mí?","What does your mom think of me?","Cosa pensa tua madre di me?","Ce părere are mama ta despre mine?","Mí takes an accent after a preposition."],
+["¿Qué significa…?","What does… mean?","Cosa significa…?","Ce înseamnă…?","Use it every day."],
+["Ayúdame con una palabra.","Help me with a word.","Aiutami con una parola.","Ajută-mă cu un cuvânt.",""],
+["Qué bueno verte.","It's good to see you.","Che bello vederti.","Ce bine să te văd.",""],
+["Estoy aquí para ti.","I'm here for you.","Sono qui per te.","Sunt aici pentru tine.",""],
+["Cuenta conmigo.","You can count on me.","Conta su di me.","Poți conta pe mine.",""],
+["Te entiendo.","I understand you.","Ti capisco.","Te înțeleg.",""],
+["No te preocupes.","Don't worry.","Non preoccuparti.","Nu-ți face griji.","Negative commands use the subjunctive form."],
+["Todo va a salir bien.","Everything will turn out fine.","Andrà tutto bene.","Totul va fi bine.",""],
+["Perdóname.","Forgive me.","Perdonami.","Iartă-mă.","The pronoun attaches, so the accent stays."],
+["Fue mi culpa.","It was my fault.","È stata colpa mia.","A fost vina mea.","Culpa ≈ colpa."],
+["No quise lastimarte.","I didn't mean to hurt you.","Non volevo farti del male.","Nu am vrut să te rănesc.","Querer in the pretérito = tried to / meant to."],
+["Hablemos con calma.","Let's talk calmly.","Parliamo con calma.","Să vorbim calm.","Nosotros command."],
+["Necesito un momento.","I need a moment.","Ho bisogno di un momento.","Am nevoie de un moment.",""],
+["Mándame un mensaje cuando llegues.","Text me when you get there.","Mandami un messaggio quando arrivi.","Trimite-mi un mesaj când ajungi.","Cuando + subjunctive: llegues."],
+["Te mando un audio.","I'll send you a voice note.","Ti mando un vocale.","Îți trimit un mesaj vocal.","Voice notes are huge in Mexican chats."],
+["Háblame cuando salgas.","Call me when you leave.","Chiamami quando esci.","Sună-mă când pleci.","In Mexico, hablar can mean to call."],
+["Te veo en la noche.","See you tonight.","Ci vediamo stasera.","Ne vedem diseară.","Mexicans say en la noche."]
+]},
+{n:11,cls:"l5",emo:"💍",name:"Boda y vida juntos",sub:"Planning the wedding, paperwork, setting up a home",deck:[
+["el anillo de compromiso","engagement ring","l'anello di fidanzamento","inelul de logodnă",""],
+["la pedida de mano","traditional formal request to the bride's family","la richiesta formale della mano","cererea în căsătorie adresată familiei","Some families still do it with a visit and a gift. Ask your fiancé."],
+["la boda civil","civil wedding","il matrimonio civile","căsătoria civilă","The legal ceremony."],
+["la boda religiosa","church wedding","il matrimonio religioso","cununia religioasă","Often separate from the civil one."],
+["el acta de matrimonio","marriage certificate","l'atto di matrimonio","certificatul de căsătorie","Acta is feminine but takes el: el acta."],
+["el acta de nacimiento","birth certificate","il certificato di nascita","certificatul de naștere",""],
+["el trámite","official procedure","la pratica","demersul administrativ","You will hear this word a lot."],
+["la cita","appointment","l'appuntamento","programarea","Also means date."],
+["el vestido de novia","wedding dress","l'abito da sposa","rochia de mireasă",""],
+["el salón de fiestas","reception hall","la sala ricevimenti","sala de evenimente",""],
+["los invitados","guests","gli invitati","invitații",""],
+["la lista de invitados","guest list","la lista degli invitati","lista de invitați",""],
+["la luna de miel","honeymoon","la luna di miele","luna de miere","Same image in all three languages."],
+["el presupuesto","budget","il budget","bugetul",""],
+["los gastos","expenses","le spese","cheltuielile",""],
+["ahorrar","to save (money)","risparmiare","a economisi",""],
+["Nos casamos en junio.","We're getting married in June.","Ci sposiamo a giugno.","Ne căsătorim în iunie.","Months are not capitalised."],
+["Queremos una boda pequeña.","We want a small wedding.","Vogliamo un matrimonio piccolo.","Vrem o nuntă mică.",""],
+["¿Cuántos invitados van a venir?","How many guests are coming?","Quanti invitati verranno?","Câți invitați vor veni?",""],
+["¿Quién va a ser el padrino?","Who is going to be the godfather?","Chi sarà il padrino?","Cine va fi nașul?","Ser + noun: a role."],
+["¿Dónde se hace el trámite?","Where is the paperwork done?","Dove si fa la pratica?","Unde se face demersul?","Se hace: impersonal se."],
+["Necesito una cita.","I need an appointment.","Ho bisogno di un appuntamento.","Am nevoie de o programare.",""],
+["¿Qué documentos necesito?","What documents do I need?","Di quali documenti ho bisogno?","De ce documente am nevoie?",""],
+["Vamos a rentar un departamento.","We're going to rent an apartment.","Affitteremo un appartamento.","Vom închiria un apartament.","Rentar and departamento are Mexican. Spain says alquilar and piso."],
+["la renta","rent","l'affitto","chiria",""],
+["Queremos tener hijos.","We want to have children.","Vogliamo avere figli.","Vrem să avem copii.",""],
+["Todavía no lo hemos decidido.","We haven't decided yet.","Non l'abbiamo ancora deciso.","Încă nu am decis.","Perfect tense: haber + participle."],
+["¿Dónde vamos a pasar las fiestas?","Where will we spend the holidays?","Dove passeremo le feste?","Unde vom petrece sărbătorile?","Las fiestas = the holiday season."],
+["Voy a extrañar a mi familia.","I'm going to miss my family.","Mi mancherà la mia famiglia.","O să-mi fie dor de familia mea.","Extrañar a + person."],
+["Mi mamá va a venir a la boda.","My mom is coming to the wedding.","Mia madre verrà al matrimonio.","Mama mea va veni la nuntă.",""]
+]},
+{n:12,cls:"l6",emo:"🩺",name:"Cuando algo sale mal",sub:"Feeling ill, emergencies, condolences, getting help",deck:[
+["Me siento mal.","I feel sick.","Mi sento male.","Mă simt rău.",""],
+["Me duele la cabeza.","I have a headache.","Mi fa male la testa.","Mă doare capul.","Doler works like gustar: the body part is the subject."],
+["Me duele el estómago.","My stomach hurts.","Mi fa male lo stomaco.","Mă doare stomacul.",""],
+["Tengo fiebre.","I have a fever.","Ho la febbre.","Am febră.",""],
+["Tengo tos.","I have a cough.","Ho la tosse.","Am tuse.",""],
+["Tengo gripa.","I have the flu.","Ho l'influenza.","Am gripă.","Mexico says gripa. Spain says gripe."],
+["Me siento mareada.","I feel dizzy. (said by a woman)","Mi sento le vertigini.","Mă simt amețită.","Men say mareado."],
+["Necesito un doctor.","I need a doctor.","Ho bisogno di un medico.","Am nevoie de un medic.",""],
+["¿Dónde está la farmacia?","Where is the pharmacy?","Dov'è la farmacia?","Unde este farmacia?",""],
+["Soy alérgica a la penicilina.","I'm allergic to penicillin. (said by a woman)","Sono allergica alla penicillina.","Sunt alergică la penicilină.",""],
+["Es una emergencia.","It's an emergency.","È un'emergenza.","Este o urgență.",""],
+["Llame a una ambulancia.","Call an ambulance.","Chiami un'ambulanza.","Chemați o ambulanță.","Formal command."],
+["En México, el número de emergencias es el 911.","In Mexico, the emergency number is 911.","In Messico il numero di emergenza è il 911.","În Mexic, numărul de urgență este 911.","Worth saving in your phone."],
+["Estoy perdida.","I'm lost. (said by a woman)","Mi sono persa.","M-am rătăcit.","Men say perdido."],
+["Se me perdió el celular.","I lost my phone.","Ho perso il cellulare.","Mi-am pierdut telefonul.","Same accidental se as se me olvidó."],
+["Mi celular se quedó sin batería.","My phone ran out of battery.","Il mio cellulare si è scaricato.","Mi s-a descărcat telefonul.","Quedarse sin = to run out of."],
+["¿Hay alguien que hable inglés?","Is there anyone who speaks English?","C'è qualcuno che parli inglese?","Este cineva care să vorbească engleză?","Subjunctive: you don't know if such a person exists."],
+["¿Puede hablar más despacio, por favor?","Can you speak more slowly, please?","Può parlare più lentamente, per favore?","Puteți vorbi mai rar, vă rog?",""],
+["No me siento bien, necesito descansar.","I don't feel well, I need to rest.","Non mi sento bene, ho bisogno di riposare.","Nu mă simt bine, trebuie să mă odihnesc.",""],
+["Que se mejore pronto.","Get well soon.","Guarisca presto.","Însănătoșire grabnică.","Subjunctive wish: que + mejore."],
+["¿Cómo sigue su mamá?","How is your mom doing? (after an illness)","Come sta sua madre?","Cum se mai simte mama dumneavoastră?","Seguir = to continue, so how is she doing now."],
+["Mi más sentido pésame.","My deepest condolences.","Le mie più sentite condoglianze.","Sincere condoleanțe.","Said at funerals and wakes."],
+["Lo siento mucho por su pérdida.","I'm very sorry for your loss.","Sono molto dispiaciuta per la vostra perdita.","Îmi pare foarte rău pentru pierderea dumneavoastră.",""],
+["Que en paz descanse.","May he or she rest in peace.","Riposi in pace.","Să se odihnească în pace.","Often abbreviated QEPD."],
+["Aquí estamos para lo que necesiten.","We're here for whatever you need.","Siamo qui per qualsiasi cosa abbiate bisogno.","Suntem aici pentru orice aveți nevoie.","Necesiten is subjunctive."],
+["Gracias por todo su apoyo.","Thank you for all your support.","Grazie per tutto il vostro sostegno.","Vă mulțumesc pentru tot sprijinul.",""],
+["Estamos con ustedes.","We're with you. (in support)","Siamo con voi.","Suntem alături de voi.","What you say to grieving or struggling family."],
+["Ánimo.","Chin up. / Be strong.","Coraggio.","Curaj.","Short and warm. Said to someone having a hard time."]
+]}
+];
+
+/* ---------- STATE ---------- */
+const KEY="hablemos-v1", DAY=86400000, INT=[0,1,3,7,21,60];
+const def=()=>({cards:{},streak:0,last:"",settings:{it:true,ro:true,auto:false,newPer:8,hard:true}});
+let S=(function(){try{const r=localStorage.getItem(KEY);if(r){const o=JSON.parse(r);const d=def();return {cards:o.cards||{},streak:o.streak||0,last:o.last||"",settings:Object.assign(d.settings,o.settings||{})}}}catch(e){}return def()})();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const key=(li,c)=>li+":"+c[0];
+const today=()=>new Date().toLocaleDateString("en-CA");
+function bumpStreak(){const t=today();if(S.last===t)return;const y=new Date(Date.now()-DAY).toLocaleDateString("en-CA");S.streak=(S.last===y)?S.streak+1:1;S.last=t;}
+function liveStreak(){const t=today(),y=new Date(Date.now()-DAY).toLocaleDateString("en-CA");return (S.last===t||S.last===y)?S.streak:0}
+function rate(li,c,g){
+  const k=key(li,c);const s=S.cards[k]||{box:0,due:0};
+  if(g===0){s.box=0;s.due=0}
+  else if(g===2){s.box=Math.min(5,s.box+1);s.due=Date.now()+INT[s.box]*DAY}
+  else{s.due=Date.now()+Math.max(1,INT[s.box])*DAY}
+  S.cards[k]=s;bumpStreak();save();
+}
+const thr=()=>S.settings.hard?4:3;
+const lvlStats=li=>{const d=LEVELS[li].deck;let m=0,st=0,due=0;const now=Date.now();d.forEach(c=>{const s=S.cards[key(li,c)];if(s){st++;if(s.box>=thr())m++;if(s.due<=now)due++}});return{m,st,due,total:d.length,fresh:d.length-st}};
+
+/* ---------- AUDIO ---------- */
+function speak(t,r){try{if(!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/…/g,""));u.lang="es-MX";const v=speechSynthesis.getVoices();const m=v.find(x=>/^es[-_]MX$/i.test(x.lang))||v.find(x=>/^es[-_](US|419)/i.test(x.lang))||v.find(x=>/^es/i.test(x.lang));if(m)u.voice=m;u.rate=r||.88;speechSynthesis.speak(u)}catch(e){}}
+try{window.speechSynthesis&&speechSynthesis.getVoices()}catch(e){}
+
+/* ---------- VIEW ---------- */
+let V={name:"home"}, SES=null;
+function go(v){V=v;render();window.scrollTo(0,0)}
+function hints(c,only){let h="";if(S.settings.it)h+=`<div class="xl"><em>Italiano</em><span>${esc(c[2])}</span></div>`;if(S.settings.ro)h+=`<div class="xl"><em>Română</em><span>${esc(c[3])}</span></div>`;return h}
+function backBlock(c){return `<div class="en">${esc(c[1])}</div>${hints(c)}${c[4]?`<div class="note">${esc(c[4])}</div>`:""}`}
+const longCls=t=>t.length>20?" long":"";
+const sayBtn=t=>`<button class="say" data-a="say" data-t="${esc(t)}" aria-label="Hear it">🔊 Listen</button>`;
+
+function render(){
+  const app=$("#app");let h="";const inSes=["study","quiz","type","done","caught"].includes(V.name);
+  $("#tabs").hidden=inSes;
+  document.querySelectorAll("#tabs button").forEach(b=>{b.removeAttribute("aria-current");const on=(V.name==="home"||V.name==="level")?"home":V.name;if(b.dataset.v===on)b.setAttribute("aria-current","page")});
+  switch(V.name){
+    case "home":h=vHome();break;
+    case "level":h=vLevel();break;
+    case "study":h=vStudy();break;
+    case "quiz":h=vQuiz();break;
+    case "type":h=vType();break;
+    case "done":h=vDone();break;
+    case "caught":h=vCaught();break;
+    case "notes":h=vNotes();break;
+    case "settings":h=vSettings();break;
+  }
+  app.innerHTML=h;
+  if(V.name==="quiz"&&S.settings.hard&&SES&&SES.pick===null){const Q=SES.qs[SES.pos];const dd=LEVELS[SES.li].deck[Q.i];const pr=Q.dir==="es"?dd[0]:dd[1];startTimer(pr.length>22?20000:12000,()=>act("pick",{i:-1}))}else stopTimer();
+  const inp=$("#typein");if(inp&&!SES.res)inp.focus();
+}
+
+function vHome(){
+  const tile=i=>{const L=LEVELS[i],s=lvlStats(i);
+    return `<button class="tile ${L.cls}" data-a="open" data-i="${i}"><div class="tile-in">
+      <div class="no"><span>Nivel ${L.n}</span><span>${s.due?s.due+" to review":s.fresh?s.fresh+" new":"all caught up"}</span></div>
+      <div class="emo" aria-hidden="true">${L.emo}</div>
+      <div><div class="tt">${L.name}</div><div class="st">${L.sub}</div></div>
+      <div class="bar"><i style="width:${Math.round(s.m/s.total*100)}%"></i></div>
+      <div class="prog">${s.m} of ${s.total} learned</div></div></button>`};
+  const fam=[6,7,8,9,10,11].map(tile).join(""),base=[0,1,2,3,4,5].map(tile).join("");
+  const st=liveStreak();
+  return `<div class="top"><div><h1>¡Hablemos!</h1><p class="muted" style="margin-top:6px">Mexican Spanish, built on the Italian and Romanian you already have.</p></div>
+    <span class="chip">🔥 ${st} ${st===1?"day":"days"}</span></div>
+    <h2 style="margin-top:22px">Para tu familia</h2>
+    <p class="muted small">Meeting his family, the table, celebrations, love and trust, the wedding, hard days. Start with Nivel 7 and run it alongside levels 1 to 3.</p>
+    <div class="tiles" style="margin-top:12px">${fam}</div>
+    <h2 style="margin-top:30px">Fundamentos</h2>
+    <div class="tiles" style="margin-top:12px">${base}</div>
+    <p class="muted small" style="margin-top:22px">${S.settings.hard?"Hard mode is on: timed quizzes, strict accents, English-first cards, and words need more reviews to count as learned.":"Levels are open. Start anywhere. Words you miss come back sooner."}</p>`;
+}
+
+function vLevel(){
+  const L=LEVELS[V.i],s=lvlStats(V.i);
+  const gapN=L.deck.filter(c=>!/[…\/]/.test(c[0])&&c[0].split(" ").length>=3).length,canTalk=!!window.speechSynthesis;
+  const rows=L.deck.map((c,ci)=>{const k=S.cards[key(V.i,c)];const d=!k?"":(k.box>=thr()?"on":"mid");
+    return `<div class="wl"><b><span class="dot ${d}"></span>${esc(c[0])}</b><span class="sub">${esc(c[1])}</span><button class="say" data-a="say" data-t="${esc(c[0])}" aria-label="Hear ${esc(c[0])}">🔊</button></div>`}).join("");
+  return `<div class="${L.cls}">
+    <button class="btn ghost" style="width:auto;padding:6px 14px;margin-bottom:14px" data-a="tab" data-v="home">← All levels</button>
+    <h2>${L.emo} Nivel ${L.n}: ${L.name}</h2><p class="muted">${L.sub}. ${s.m} of ${s.total} learned${s.due?`, ${s.due} due now`:""}.</p>
+    <div class="modes">
+      <button class="btn main mode" data-a="study" data-i="${V.i}"><span class="ic">🃏</span><b>Cards</b><span class="small">Learn and review new and due words</span></button>
+      <button class="btn mode" data-a="quiz" data-i="${V.i}"><span class="ic">🎯</span><b>Quiz</b><span class="small">Ten multiple-choice questions</span></button>
+      <button class="btn mode" data-a="type" data-i="${V.i}"><span class="ic">⌨️</span><b>Type it</b><span class="small">See the English, write the Spanish</span></button>
+      <button class="btn mode ${gapN<5?"off":""}" data-a="gap" data-i="${V.i}" ${gapN<5?"disabled":""}><span class="ic">🧩</span><b>Fill the gap</b><span class="small">${gapN<5?"Needs sentences. Try level 4 and up":"Find the missing word in a sentence"}</span></button>
+      <button class="btn mode ${canTalk?"":"off"}" data-a="listen" data-i="${V.i}" ${canTalk?"":"disabled"}><span class="ic">👂</span><b>Dictado</b><span class="small">${canTalk?"Hear it, write what you hear":"Audio isn't available in this browser"}</span></button>
+    </div>
+    <details><summary>Word list (${s.total})</summary>${rows}</details></div>`;
+}
+
+/* --- study --- */
+function startStudy(li,force){
+  const d=LEVELS[li].deck,now=Date.now();const due=[],fresh=[];
+  d.forEach((c,i)=>{const s=S.cards[key(li,c)];if(!s)fresh.push(i);else if(s.due<=now)due.push(i)});
+  let q=shuffle(due).concat(fresh.slice(0,S.settings.newPer));
+  if(!q.length){if(!force){go({name:"caught",i:li});return}q=shuffle(d.map((_,i)=>i)).slice(0,10)}
+  const hard=S.settings.hard;
+  SES={mode:"study",li,q,dirs:q.map(()=>hard&&Math.random()<.5),pos:0,flip:false,total:q.length,again:0};go({name:"study"});
+  if(S.settings.auto&&!SES.dirs[0])speak(d[q[0]][0]);
+}
+function vStudy(){
+  const L=LEVELS[SES.li],c=L.deck[SES.q[SES.pos]],rev=SES.dirs[SES.pos];
+  const pct=Math.round(SES.pos/SES.q.length*100);
+  const front=rev?`<div class="es" style="font-size:${c[1].length>22?"1.5rem":"2rem"}">${esc(c[1])}</div><div class="muted small">Say it in Spanish before you flip</div>`
+    :`<div class="es${longCls(c[0])}">${esc(c[0])}</div>${sayBtn(c[0])}`;
+  let back="";
+  if(SES.flip){back=rev?`<div class="back"><div class="es${longCls(c[0])}" style="margin:6px 0 0;text-align:center">${esc(c[0])}</div><div class="center">${sayBtn(c[0])}</div>${hints(c)}${c[4]?`<div class="note">${esc(c[4])}</div>`:""}</div>`
+    :`<div class="back">${backBlock(c)}</div>`}
+  else back=`<div class="tap">${rev?"Recall it out loud first, then tap to check":"Think of the meaning, then tap to check"}</div>`;
+  return `<div class="${L.cls}"><div class="sesbar"><button class="x" data-a="exit" aria-label="Close">✕</button><div class="meter"><i style="width:${pct}%"></i></div></div>
+  <div class="card"><div class="card-in">
+    <div class="num"><span>No. ${SES.q[SES.pos]+1}</span><span>${L.emo}</span></div>
+    ${front}${back}
+  </div></div>
+  ${SES.flip?`<div class="row three">
+    <button class="btn" data-a="grade" data-g="0">Again</button>
+    <button class="btn" data-a="grade" data-g="1">Almost</button>
+    <button class="btn main" data-a="grade" data-g="2">Got it</button></div>`
+  :`<div class="row"><button class="btn main" data-a="flip">Show answer</button></div>`}</div>`;
+}
+
+/* --- quiz --- */
+function startQuiz(li){
+  const d=LEVELS[li].deck,hard=S.settings.hard;const idx=d.map((_,i)=>i);
+  const sim=(a,b)=>{a=a.toLowerCase();b=b.toLowerCase();let v=0;if(a[0]===b[0])v+=2;if(a.slice(0,2)===b.slice(0,2))v+=2;v-=Math.abs(a.length-b.length)/4;return v+Math.random()};
+  const weak=shuffle(idx).sort((a,b)=>{const sa=S.cards[key(li,d[a])],sb=S.cards[key(li,d[b])];return (sa?sa.box:-1)-(sb?sb.box:-1)+(Math.random()-.5)*3});
+  const picks=shuffle(weak.slice(0,Math.min(hard?12:10,d.length)));
+  const qs=picks.map((i,n)=>{const dir=n%2===0?"es":"en";const f=dir==="es"?1:0;const tgt=d[i][f];
+    let pool=idx.filter(x=>x!==i&&d[x][f]!==tgt);
+    pool=hard?pool.map(x=>[x,sim(tgt,d[x][f])]).sort((a,b)=>b[1]-a[1]).slice(0,8).map(a=>a[0]):pool;
+    const others=shuffle(pool).slice(0,3);
+    return{i,dir,opts:shuffle([i].concat(others))}});
+  SES={mode:"quiz",li,qs,pos:0,score:0,pick:null,total:qs.length};go({name:"quiz"});
+  if(S.settings.auto&&qs[0].dir==="es")speak(d[qs[0].i][0]);
+}
+function vQuiz(){
+  const L=LEVELS[SES.li],d=L.deck,Q=SES.qs[SES.pos],c=d[Q.i];
+  const prompt=Q.dir==="es"?c[0]:c[1];
+  const opts=Q.opts.map(i=>{const t=Q.dir==="es"?d[i][1]:d[i][0];let cl="opt";
+    if(SES.pick!==null){if(i===Q.i)cl+=" right";else if(i===SES.pick)cl+=" wrong"}
+    return `<button class="${cl}" data-a="pick" data-i="${i}" ${SES.pick!==null?"disabled":""}>${esc(t)}</button>`}).join("");
+  const pct=Math.round(SES.pos/SES.qs.length*100);
+  const timer=(S.settings.hard&&SES.pick===null)?`<div class="meter" style="margin-bottom:12px"><i id="tbar" style="width:100%"></i></div>`:"";
+  let fb="";
+  if(SES.pick!==null){const ok=SES.pick===Q.i;fb=`<div class="fb"><b class="${ok?"ok":"no"}">${ok?"¡Correcto!":(SES.pick===-1?"Time's up":"Not quite")}</b><div><b>${esc(c[0])}</b> means ${esc(c[1])}</div>${hints(c)}${c[4]?`<div class="note">${esc(c[4])}</div>`:""}</div>
+    <div class="row"><button class="btn main" data-a="next">${SES.pos+1<SES.qs.length?"Next":"See results"}</button></div>`}
+  return `<div class="${L.cls}"><div class="sesbar"><button class="x" data-a="exit" aria-label="Close">✕</button><div class="meter"><i style="width:${pct}%"></i></div></div>
+    ${timer}
+    <div class="qd">${Q.dir==="es"?"What does this mean?":"How do you say this in Spanish?"}</div>
+    <div class="q${longCls(prompt)}">${esc(prompt)}</div>
+    ${Q.dir==="es"?`<div class="center" style="margin-bottom:14px">${sayBtn(c[0])}</div>`:""}
+    <div class="opts">${opts}</div>${fb}</div>`;
+}
+
+/* --- type --- */
+const norm=t=>t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[¿¡?!.,;:"']/g,"").replace(/\s+/g," ").trim();
+const normKeepN=t=>t.toLowerCase().replace(/[¿¡?!.,;:"']/g,"").replace(/\s+/g," ").trim();
+function startInput(li,mode){
+  const d=LEVELS[li].deck,hard=S.settings.hard;
+  let ok=d.map((c,i)=>i).filter(i=>!/[…\/]/.test(d[i][0]));
+  if(mode==="gap")ok=ok.filter(i=>d[i][0].split(" ").length>=3);
+  const q=shuffle(ok).slice(0,hard?12:10);
+  const gw=q.map(i=>{const ws=d[i][0].split(" ");const cand=ws.map((w,k)=>[w.replace(/[¿¡.,;:?!]/g,""),k]).filter(x=>x[0].length>=4);
+    const pool=cand.length?cand:ws.map((w,k)=>[w,k]).sort((a,b)=>b[0].length-a[0].length).slice(0,1);
+    return pool[Math.floor(Math.random()*pool.length)][1]});
+  SES={mode,li,q,gw,pos:0,res:null,hint:false,score:0,total:q.length};go({name:"type"});
+  if(mode==="listen")speak(d[q[0]][0]);
+}
+function expected(){const c=LEVELS[SES.li].deck[SES.q[SES.pos]];if(SES.mode==="gap")return c[0].split(" ")[SES.gw[SES.pos]];return c[0]}
+function vType(){
+  const L=LEVELS[SES.li],c=L.deck[SES.q[SES.pos]],m=SES.mode;
+  const pct=Math.round(SES.pos/SES.q.length*100);
+  let head="";
+  if(m==="type")head=`<div class="qd">Say it in Spanish</div><div class="q${longCls(c[1])}">${esc(c[1])}</div>`;
+  else if(m==="gap"){const ws=c[0].split(" "),w=SES.gw[SES.pos];
+    const g=ws.map((x,k)=>{if(k!==w)return esc(x);const lead=(x.match(/^[¿¡]*/)||[""])[0],trail=(x.match(/[.,;:?!]*$/)||[""])[0];return esc(lead)+`<span class="gap">&nbsp;</span>`+esc(trail)}).join(" ");
+    head=`<div class="qd">Type the missing word</div><div class="q long">${g}</div><div class="qd">${esc(c[1])}</div>`}
+  else head=`<div class="qd">Listen, then write what you hear</div><div class="row two" style="margin:14px 0"><button class="btn main" data-a="say" data-t="${esc(c[0])}">🔊 Play</button><button class="btn" data-a="say" data-t="${esc(c[0])}" data-r="0.55">🐢 Slow</button></div>`;
+  let body="";
+  if(!SES.res){
+    const hintHtml=SES.hint?`<div class="fb">${m==="listen"?`<div><b>${esc(c[1])}</b></div>`:""}${hints(c)||(m==="listen"?"":"<span class='muted'>Hints are off in Settings.</span>")}${S.settings.hard?`<div class="small muted">Using a hint caps this word at "Almost".</div>`:""}</div>`:"";
+    body=`<input id="typein" class="ans" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="${m==="gap"?"Missing word":"Escribe en español"}">
+      <div class="accents">${["á","é","í","ó","ú","ñ","¿","¡"].map(a=>`<button data-a="ch" data-c="${a}" aria-label="Insert ${a}">${a}</button>`).join("")}</div>
+      ${hintHtml}
+      <div class="row two"><button class="btn" data-a="hint">Hint</button><button class="btn main" data-a="check">Check</button></div>`;
+  }else{
+    const r=SES.res;
+    body=`<div class="fb"><b class="${r.ok?"ok":"no"}">${r.ok?(r.accent?"Right, mind the accent":"¡Correcto!"):(r.accent?"So close. Check the accent":"Not quite")}</b>
+      <div>Answer: <b>${esc(c[0])}</b></div><div class="center">${sayBtn(c[0])}</div><div>${esc(c[1])}</div>${hints(c)}${c[4]?`<div class="note">${esc(c[4])}</div>`:""}</div>
+      <div class="row"><button class="btn main" data-a="next">${SES.pos+1<SES.q.length?"Next":"See results"}</button></div>`;
+  }
+  return `<div class="${L.cls}"><div class="sesbar"><button class="x" data-a="exit" aria-label="Close">✕</button><div class="meter"><i style="width:${pct}%"></i></div></div>${head}${body}</div>`;
+}
+
+function vDone(){
+  const L=LEVELS[SES.li];const sc=SES.mode==="study"?null:SES.score;
+  const msg=SES.mode==="study"?`${SES.total} cards reviewed${SES.again?`, ${SES.again} to see again soon`:""}.`:`${sc} of ${SES.total} correct.`;
+  const emoji=SES.mode==="study"?"🌮":(sc/SES.total>=.8?"🎉":sc/SES.total>=.5?"👍":"💪");
+  return `<div class="${L.cls}"><div class="big">${emoji}</div><h2 class="center">¡Muy bien!</h2><p class="center muted">${msg}</p>
+    <p class="center"><span class="chip">🔥 ${liveStreak()} ${liveStreak()===1?"day":"days"}</span></p>
+    <div class="row"><button class="btn main" data-a="again" data-i="${SES.li}" data-m="${SES.mode}">Go again</button>
+    <button class="btn" data-a="open" data-i="${SES.li}">Back to level</button>
+    <button class="btn ghost" data-a="tab" data-v="home">All levels</button></div></div>`;
+}
+function vCaught(){
+  const L=LEVELS[V.i];
+  return `<div class="${L.cls}"><div class="big">✅</div><h2 class="center">All caught up</h2>
+    <p class="center muted">Nothing is due and there are no new cards left in this level. Practise anyway, or try the quiz.</p>
+    <div class="row"><button class="btn main" data-a="practice" data-i="${V.i}">Practise 10 random cards</button>
+    <button class="btn" data-a="quiz" data-i="${V.i}">Take the quiz</button>
+    <button class="btn ghost" data-a="open" data-i="${V.i}">Back</button></div></div>`;
+}
+
+/* --- notes --- */
+function vNotes(){
+  return `<h1>Notas</h1><p class="muted" style="margin-top:6px">Your head start, and where Mexican Spanish does its own thing.</p>
+  <details open><summary>Meeting his family</summary>
+    <p><b>Greeting:</b> a handshake or one kiss on the cheek is common, and close family often hug. Follow his lead the first time.</p>
+    <p><b>Tú or usted:</b> use usted with his parents, grandparents and older relatives until they invite you to say tú (<i>puedes hablarme de tú</i>). Younger cousins and friends are usually tú.</p>
+    <p><b>Titles:</b> doña and don plus a first name (doña Rosa, don Luis) is warm and respectful for older people.</p>
+    <p><b>Food:</b> food is love. Accepting a plate, taking seconds and praising the cook all count as manners. If you're full, say <i>estoy llena, gracias, estuvo delicioso</i> with a smile. The sobremesa, talking at the table afterwards, is part of the meal.</p>
+    <p><b>Mistakes:</b> nobody expects perfect Spanish. Trying is what they notice, and families usually love correcting you kindly.</p>
+    <p class="muted small">Customs vary by family and region, so ask your fiancé what to expect.</p>
+  </details>
+  <details><summary>Shortcuts from Italian</summary>
+    <p><b>Endings:</b> -zione → -ción (nazione → nación), -tà → -dad (città → ciudad), -mente stays (finalmente → finalmente).</p>
+    <p><b>Diphthongs:</b> Italian uo/ie often match Spanish ue/ie (nuovo → nuevo, fuoco → fuego, tempo → tiempo).</p>
+    <p><b>Grammar twins:</b> piacere → gustar, subjunctive ≈ congiuntivo, pro-drop, double negatives, and avere for age and hunger.</p>
+    <p><b>Traps:</b></p>
+    <div class="scroll"><table><tr><th>Spanish</th><th>Not</th><th>Means</th></tr>
+    <tr><td>burro</td><td>butter</td><td>donkey (butter is mantequilla)</td></tr>
+    <tr><td>ropa</td><td>roba, stuff</td><td>clothes</td></tr>
+    <tr><td>caldo</td><td>caldo, hot</td><td>broth (hot is caliente)</td></tr>
+    <tr><td>largo</td><td>largo, wide</td><td>long (wide is ancho)</td></tr>
+    <tr><td>salir</td><td>salire, go up</td><td>to go out, to leave</td></tr>
+    <tr><td>guardar</td><td>guardare, look</td><td>to keep, to put away</td></tr></table></div>
+  </details>
+  <details><summary>Shortcuts from Romanian</summary>
+    <p><b>Endings:</b> -ție → -ción (națiune → nación, informație → información), -tate → -dad (realitate → realidad, universitate → universidad).</p>
+    <p><b>Grammar twins:</b> să + conjunctive ≈ que + subjunctive (vreau să vii → quiero que vengas). Personal a before people, like Romanian pe (îl văd pe Ion → veo a Juan). Pro-drop, double negatives, no need for a subject pronoun.</p>
+    <p><b>Core words that line up:</b> ieri / ayer, mâine / mañana, caș / queso, a cânta / cantar, a face / hacer, a vedea / ver, luna / luna, mare / mar, soare / sol.</p>
+    <p><b>Trap:</b> Romanian a ține means to hold. Spanish tener means to have.</p>
+    <p><b>Sound bonus:</b> Spanish j sounds like Romanian h, ñ is like gn in Italian gnocchi, and ch is like Italian ci.</p>
+  </details>
+  <details><summary>Pronunciation in Mexico</summary>
+    <p><b>Vowels:</b> five pure vowels, a e i o u, exactly like Italian. Never glide them.</p>
+    <p><b>c and z:</b> ce, ci and z all sound like s. So cena is SE-na, not CHE-na. Italian speakers, watch this one.</p>
+    <p><b>gue, gui:</b> like Italian ghe, ghi. The u is silent.</p>
+    <p><b>qu:</b> always k. <b>h:</b> always silent. <b>v:</b> sounds like b. <b>ll and y:</b> like y in yes.</p>
+    <p><b>rr:</b> a rolled r, as in Italian and Romanian.</p>
+    <p><b>x in México:</b> pronounced like Spanish j: MEH-hee-ko.</p>
+  </details>
+  <details><summary>Mexico vs Spain</summary>
+    <div class="scroll"><table><tr><th>English</th><th>Mexico</th><th>Spain</th></tr>
+    <tr><td>you all</td><td>ustedes</td><td>vosotros</td></tr>
+    <tr><td>cell phone</td><td>celular</td><td>móvil</td></tr>
+    <tr><td>car</td><td>carro</td><td>coche</td></tr>
+    <tr><td>computer</td><td>computadora</td><td>ordenador</td></tr>
+    <tr><td>juice</td><td>jugo</td><td>zumo</td></tr>
+    <tr><td>sidewalk</td><td>banqueta</td><td>acera</td></tr>
+    <tr><td>bus</td><td>camión</td><td>autobús</td></tr>
+    <tr><td>to chat</td><td>platicar</td><td>charlar</td></tr></table></div>
+    <p style="margin-top:10px"><b>Past tense:</b> Mexican speech prefers the pretérito (¿ya comiste?) over the perfect (¿ya has comido?).</p>
+    <p><b>Politeness:</b> usted is more common than in Spain, and diminutives (-ito, -ita) soften almost everything: ahorita, tantito, un ratito.</p>
+  </details>`;
+}
+
+function vSettings(){
+  const sw=(k,l,sub)=>`<div class="set"><div><b>${l}</b>${sub?`<div class="muted small">${sub}</div>`:""}</div><button class="sw" role="switch" aria-checked="${S.settings[k]}" aria-label="${l}" data-a="tog" data-k="${k}"></button></div>`;
+  const tts=!!window.speechSynthesis;const h=S.settings.hard;
+  return `<h1>Ajustes</h1>
+  <div class="set"><div><b>Difficulty</b><div class="muted small">Hard: timed quizzes, look-alike answer choices, strict accents, English-first cards, hints cap the grade, and words need more reviews to count as learned.</div></div>
+    <div class="seg"><button data-a="diff" data-h="0" aria-pressed="${!h}">Normal</button><button data-a="diff" data-h="1" aria-pressed="${h}">Hard</button></div></div>
+  ${sw("it","Show Italian","Appears on answers as a memory hook")}
+  ${sw("ro","Show Romanian","Appears on answers as a memory hook")}
+  ${sw("auto","Auto-play pronunciation","Speaks each new word")}
+  <div class="set"><div><b>New cards per session</b></div><div class="seg">${[5,8,12,20].map(n=>`<button data-a="newper" data-n="${n}" aria-pressed="${S.settings.newPer===n}">${n}</button>`).join("")}</div></div>
+  <p class="muted small" style="margin-top:12px">${tts?"Audio uses your device's Spanish voice. If it sounds like Spain, add a Mexican Spanish voice in your device's speech settings.":"Audio isn't available in this browser."}</p>
+  <div class="row"><button class="btn" data-a="reset">Reset all progress</button></div>
+  <p class="muted small">Progress is saved in this browser only.</p>`;
+}
+
+/* ---------- ACTIONS ---------- */
+function advance(){
+  SES.pos++;SES.pick=null;SES.res=null;SES.hint=false;
+  const n=SES.mode==="quiz"?SES.qs.length:SES.q.length;
+  if(SES.pos>=n){go({name:"done"});return}
+  render();
+  const d=LEVELS[SES.li].deck;
+  if(SES.mode==="listen")speak(d[SES.q[SES.pos]][0]);
+  else if(S.settings.auto&&SES.mode==="quiz"){const Q=SES.qs[SES.pos];if(Q.dir==="es")speak(d[Q.i][0])}
+}
+let QT=null;
+function stopTimer(){if(QT){clearInterval(QT);QT=null}}
+function startTimer(ms,onEnd){stopTimer();const t0=Date.now();QT=setInterval(()=>{const f=1-(Date.now()-t0)/ms;const b=$("#tbar");if(b)b.style.width=Math.max(0,f*100)+"%";if(f<=0){stopTimer();onEnd()}},100)}
+function act(a,ds){
+  const L=SES?LEVELS[SES.li]:null;
+  switch(a){
+    case "tab":SES=null;go({name:ds.v});break;
+    case "open":SES=null;go({name:"level",i:+ds.i});break;
+    case "study":startStudy(+ds.i,false);break;
+    case "practice":startStudy(+ds.i,true);break;
+    case "quiz":startQuiz(+ds.i);break;
+    case "type":startInput(+ds.i,"type");break;
+    case "gap":startInput(+ds.i,"gap");break;
+    case "listen":startInput(+ds.i,"listen");break;
+    case "again":ds.m==="study"?startStudy(+ds.i,false):ds.m==="quiz"?startQuiz(+ds.i):startInput(+ds.i,ds.m);break;
+    case "exit":{const li=SES.li;SES=null;try{speechSynthesis.cancel()}catch(e){}go({name:"level",i:li})}break;
+    case "say":speak(ds.t,ds.r?+ds.r:undefined);break;
+    case "flip":SES.flip=true;render();if(S.settings.auto&&SES.dirs[SES.pos])speak(L.deck[SES.q[SES.pos]][0]);break;
+    case "grade":{const g=+ds.g,idx=SES.q[SES.pos];rate(SES.li,L.deck[idx],g);
+      if(g===0){SES.again++;SES.q.push(idx);SES.dirs.push(S.settings.hard&&Math.random()<.5)}
+      SES.pos++;SES.flip=false;
+      if(SES.pos>=SES.q.length){go({name:"done"});break}
+      render();if(S.settings.auto&&!SES.dirs[SES.pos])speak(L.deck[SES.q[SES.pos]][0]);}break;
+    case "pick":{if(SES.pick!==null)break;const Q=SES.qs[SES.pos],i=+ds.i,ok=i===Q.i;SES.pick=i;if(ok)SES.score++;
+      rate(SES.li,L.deck[Q.i],ok?2:0);render();}break;
+    case "next":advance();break;
+    case "hint":SES.hint=true;{const v=($("#typein")||{}).value||"";render();const inp=$("#typein");if(inp){inp.value=v;inp.focus()}}break;
+    case "ch":{const inp=$("#typein");if(inp){const s0=inp.selectionStart||inp.value.length;inp.value=inp.value.slice(0,s0)+ds.c+inp.value.slice(inp.selectionEnd||s0);inp.focus();const p=s0+1;inp.setSelectionRange(p,p)}}break;
+    case "check":{const inp=$("#typein");if(!inp||SES.res)break;const c=L.deck[SES.q[SES.pos]];const v=inp.value;if(!v.trim()){inp.focus();break}
+      const exp=expected();const same=norm(v)===norm(exp);const exact=normKeepN(v)===normKeepN(exp);
+      const ok=S.settings.hard?exact:same;
+      SES.res={ok,accent:same&&!exact};if(ok)SES.score++;
+      rate(SES.li,c,ok?((SES.hint||!exact)?1:2):0);render();}break;
+    case "tog":S.settings[ds.k]=!S.settings[ds.k];save();render();break;
+    case "diff":S.settings.hard=ds.h==="1";save();render();break;
+    case "newper":S.settings.newPer=+ds.n;save();render();break;
+    case "reset":if(confirm("Reset all progress? This can't be undone.")){S=def();save();render()}break;
+  }
+}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-a]");if(!t||t.disabled)return;act(t.dataset.a,t.dataset)});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="typein"){e.preventDefault();act("check",{})}else if(e.key==="Enter"&&SES&&SES.res&&V.name==="type"&&document.activeElement===document.body){act("next",{})}});
+render();
+</script>
+</body>
+</html>
